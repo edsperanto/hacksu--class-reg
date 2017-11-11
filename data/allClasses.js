@@ -11,7 +11,7 @@ function getTerms() {
 	}).slice(1,4);
 }
 
-casper.start(url)
+var go = casper.start(url)
 	.then(function() { this.click('#acctLogin a') })
 	.thenEvaluate(function(usr, pwd) {
 		console.log('usr: ', usr);
@@ -39,9 +39,23 @@ casper.start(url)
 	})
 	.thenEvaluate(function() {
 		document.querySelector('form[name="datatelform"]').submit();
-	})
-	.then(function() { 
-		console.log(this.getHTML());
-	})
-	.then(function() { casper.capture('18WQ.png') })
-	.run();
+	});
+
+	function loopThru(cb, n) {
+		if(n > 0) {
+			var iter = cb
+			.then(function() {
+				fs.write('./18WQ/p' + (66-n+1) + '.html', this.getHTML(), 'w');
+			})
+			.then(function() {
+				this.click('input[value="NEXT"]');
+			});
+			return loopThru(iter, n-1);
+		}else{
+			return cb;
+		}
+	}
+
+var looped = loopThru(go, 66);
+	
+looped.run();
