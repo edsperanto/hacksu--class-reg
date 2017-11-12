@@ -22,13 +22,6 @@ var go = casper.start(url)
 	}, usr, pwd)
 	.then(function() { this.click('.WBST_Bars') })
 	.then(function() { this.click('.left ul:nth-child(6) li:nth-child(3) a') })
-	.then(function() { this.echo(this.getTitle()) })
-	/*
-	.then(function() { terms = this.evaluate(getTerms) })
-	.then(function() {
-		console.log(terms);
-	})
-	*/
 	.then(function() { 
 		this.click('select[name="VAR1"]');
 		this.evaluate(function() {

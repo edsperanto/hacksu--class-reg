@@ -3,8 +3,6 @@ const casper = require('casper').create();
 const url = 'https://webadvisor.seattleu.edu/WAPROD/WebAdvisor?TYPE=M&PID=CORE-WBMAIN';
 const usr = casper.cli.get(0);
 const pwd = casper.cli.get(1);
-console.log('usr: ', usr);
-console.log('pwd: ', pwd);
 
 var go = casper.start(url)
 	.then(function() { this.click('#acctLogin a') })
@@ -14,9 +12,18 @@ var go = casper.start(url)
 		document.querySelector('form[name="datatelform"]').submit();
 	}, usr, pwd)
 	.then(function() { this.click('.WBST_Bars') })
-	.then(function() { this.click('.left ul:nth-child(6) li:nth-child(1) a') })
+	.then(function() { this.click('.left ul:nth-child(6) li:nth-child(3) a') })
 	.then(function() { 
-		console.log(this.getHTML());
-	});
+		console.log(this.getTitle());
+	})
+	.then(function() {
+		this.click('select[name="VAR1"]');
+		this.evaluate(function() {
+			var term = document.querySelector('select[name="VAR1"]');
+			term.selectedIndex = 2;
+			$(term).change();
+		});
+	})
+	.then
 	
 go.run();
