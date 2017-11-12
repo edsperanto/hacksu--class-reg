@@ -5,29 +5,48 @@ const PORT = process.env.PORT || 4009;
 
 // request handlers
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 
-// set a cookie
+// temporarily store usr/pwd for session
 app.use((req, res, next) => {
-	var cookie = req.cookies.cookieName;
-	if(!!!cookie) {
-		var rnd = Math.random().toString();
-		var options = { maxAge: 900000, httpOnly: true };
-		rnd = rnd.substring(2, rnd.length);
-		res.cookie('cookieName', rnd, options);
-		console.log('cookie created successfully');
-	}else{
-		console.log('cookie exists: ', cookie);
-	}
+	// check with SUOnline before doing this:
+	req.usr = req.body.usr;
+	req.pwd = req.body.pwd;
+	console.log('usr: ', req.body.usr);
+	console.log('pwd: ', req.body.pwd);
 	next();
 });
 
 // routes
 app.get('/', (req, res) => {
-	res.send('ayy lmao');
+	if(!!!req.usr || !!!req.pwd) {
+		res.redirect('/login');
+	}else{
+		res.send('Welcome!');
+	}
+});
+
+app.get('/login', (req, res) => {
+	res.send('pls login');
+});
+
+// block unauthenticated users
+app.use((req, res, next) => {
+	if(!!!req.usr || !!!req.pwd) {
+		res.status(403);
+		res.send('FORBIDDEN');
+	}
+});
+
+// 404 Not Found
+app.use((req, res, next) => {
+	res.status(404);
+	res.redirect('/404');
+});
+app.get('/404', (req, res) => {
+	res.status(404);
+	res.send('404 NOT FOUND');
 });
 
 // start express server
