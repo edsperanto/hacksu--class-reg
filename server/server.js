@@ -5,12 +5,25 @@ const PORT = process.env.PORT || 4009;
 
 // request handlers
 const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
 app.use(cookieParser());
+
+// set a cookie
+app.use((req, res, next) => {
+	var cookie = req.cookies.cookieName;
+	if(!!!cookie) {
+		var rnd = Math.random().toString();
+		var options = { maxAge: 900000, httpOnly: true };
+		rnd = rnd.substring(2, rnd.length);
+		res.cookie('cookieName', rnd, options);
+		console.log('cookie created successfully');
+	}else{
+		console.log('cookie exists: ', cookie);
+	}
+	next();
+});
 
 // routes
 app.get('/', (req, res) => {

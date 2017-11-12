@@ -4,6 +4,7 @@
 
 ### Dependencies
 
-- Server-side: NodeJS, PostgreSQL, Redis
+- Server-side: NodeJS
 - Data Scraping: PhantomJS, CasperJS
-- Node modules: sequelize, body-parser, pg, pg-store
+- Node modules: express, body-parser, cookie-parser
+- Front-end Framework: React
