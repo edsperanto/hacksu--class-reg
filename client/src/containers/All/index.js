@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.css';
-import Course from '../../components';
 
 import { updatePage } from '../../actions';
 
@@ -11,9 +10,30 @@ class All extends Component {
 	render() {
 		return (
 			<div id="all-page">
-				<p>All classes</p>
-				<br />
-				{JSON.stringify(this.props.allClass)}
+				<div id="all-left">
+					<div id="all-classes-title">All Classes</div>
+					<input type="text" id="all-classes-search"></input>
+					<div id="all-classes-list">
+					{
+						this.props.allClass
+							.filter(course => {
+								return true;
+							})
+							.map(course => {
+								return(
+									<div className="course-card">
+										<p class="name">{course.name}</p>
+									</div>
+								);
+							})
+					}
+					</div>
+				</div>
+				<div id="all-right">
+					<div id="candidates-title">Candidates</div>
+					<div id="candidates-list">
+					</div>
+				</div>
 			</div>
 		);
 	}

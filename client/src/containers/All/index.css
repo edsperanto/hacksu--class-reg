@@ -1,0 +1,65 @@
+#all-page {
+	background-color: white;
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#all-left {
+	display: inline-block;
+	width: 50%;
+	overflow-y: scroll;
+	height: 100%;
+	padding: 1rem;
+}
+
+#all-classes-title {
+	font-weight: bold;
+	width: 100%;
+	height: 2rem;
+}
+
+#all-classes-search {
+	display: block;
+	border: 1px solid black;
+	width: 100%;
+	height: 2rem;
+	font-size: 1rem;
+	font-weight: normal;
+	padding-left: 0.5rem;
+}
+
+#all-classes-list {
+	border: 1px solid black;
+	width: 100%;
+	height: calc(100% - 5rem);
+	margin-top: 1rem;
+	overflow-y: scroll;
+}
+
+.course-card {
+	border: 1px solid black;
+	padding: 0.25rem;
+	padding-left: 1rem;
+}
+
+#all-right {
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	padding: 1rem;
+	overflow-y: scroll;
+}
+
+#candidates-title {
+	font-weight: bold;
+	width: 100%;
+	height: 2rem;
+}
+
+#candidates-list {
+	border: 1px solid black;
+	width: 100%;
+	height: calc(100% - 2rem);
+	overflow-y: scroll;
+}
