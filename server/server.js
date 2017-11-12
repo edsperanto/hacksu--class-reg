@@ -8,6 +8,13 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// remove \/hacksu in route
+app.use((req, res, next) => {
+	console.log('path: ', req.path);
+	req.path = req.path.split('/hacksu').join('');
+	next();
+});
+
 // temporarily store usr/pwd for session
 app.use((req, res, next) => {
 	// check with SUOnline before doing this:
