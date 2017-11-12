@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './index.css';
+
+import { updateUsr } from '../../actions';
 
 class Login extends Component {
 	render() {
@@ -19,4 +22,19 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+function mapStateToProps(state) {
+	return {
+		usr: state.data.usr
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		onUpdateUsr: usr => dispatch(updateUsr(usr))
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Login);

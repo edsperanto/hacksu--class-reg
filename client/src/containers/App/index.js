@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './index.css';
+
 import Login from '../Login';
+import { updateUsr } from '../../actions';
 
 class App extends Component {
   render() {
@@ -17,4 +20,19 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+	return {
+		usr: state.data.usr
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		onUpdateUsr: usr => dispatch(updateUsr(usr))
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App);
