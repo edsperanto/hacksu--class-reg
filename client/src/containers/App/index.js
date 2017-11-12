@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './index.css';
+import Login from '../Login';
 
 class App extends Component {
   render() {
@@ -10,6 +10,7 @@ class App extends Component {
           <p className="App-title">HackSU</p>
         </header>
         <div className="body">
+					<Login />
         </div>
       </div>
     );
