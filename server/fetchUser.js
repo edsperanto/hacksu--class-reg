@@ -3,8 +3,6 @@ const casper = require('casper').create();
 const url = 'https://webadvisor.seattleu.edu/WAPROD/WebAdvisor?TYPE=M&PID=CORE-WBMAIN';
 const usr = casper.cli.get(0);
 const pwd = casper.cli.get(1);
-console.log('usr: ', usr);
-console.log('pwd: ', pwd);
 
 var go = casper.start(url)
 	.then(function() { this.click('#acctLogin a') })
