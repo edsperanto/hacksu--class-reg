@@ -8,13 +8,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// remove \/hacksu in route
-app.use((req, res, next) => {
-	if(req.url.indexOf('/hacksu') > -1)
-		req.url = req.url.split('/hacksu').join('');
-	next();
-});
-
 // temporarily store usr/pwd for session
 app.use((req, res, next) => {
 	// check with SUOnline before doing this:
@@ -26,15 +19,15 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.get('/', (req, res) => {
+app.get('/hacksu', (req, res) => {
 	if(!!!req.usr || !!!req.pwd) {
-		res.redirect('/login');
+		res.redirect('/hacksu/login');
 	}else{
 		res.send('Welcome!');
 	}
 });
 
-app.get('/login', (req, res) => {
+app.get('/hacksu/login', (req, res) => {
 	res.send('pls login');
 });
 
@@ -49,9 +42,9 @@ app.use((req, res, next) => {
 // 404 Not Found
 app.use((req, res, next) => {
 	res.status(404);
-	res.redirect('/404');
+	res.redirect('/hacksu/404');
 });
-app.get('/404', (req, res) => {
+app.get('/hacksu/404', (req, res) => {
 	res.status(404);
 	res.send('404 NOT FOUND');
 });
