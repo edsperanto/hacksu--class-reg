@@ -1,0 +1,23 @@
+#welcome-page {
+	background-color: white;
+	width: 50rem;
+	margin: 0 auto;
+	padding: 1.5rem;
+	position: relative;
+	top: 2rem;
+	padding-bottom: 2.5rem;
+}
+
+#welcome-title {
+	display: block;
+	font-size: 2rem;
+	font-weight: bold;
+	padding-top: 1rem;
+	margin-bottom: 2rem;
+	margin-left: 1rem;
+}
+
+#welcome-page p {
+	margin-left: 2rem;
+	margin-top: 1rem;
+}

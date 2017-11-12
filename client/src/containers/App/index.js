@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import './index.css';
 
 import Login from '../Login';
+import Welcome from '../Welcome';
 import { updateUsr } from '../../actions';
 
 class App extends Component {
 	switcher = _ => {
 		switch(this.props.page) {
-			case 'login': return (<Login />); break;
-			case 'welcome': return (<p>sanity</p>); break;
+			case 'login': return (<Login />);
+			case 'welcome': return (<Welcome />);
+			default: return (<Login />);
 		}
 	}
   render() {

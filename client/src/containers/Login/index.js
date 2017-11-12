@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import './index.css';
 
 import { updateUsr, updatePwd, updatePage } from '../../actions';
+import { updateFirstName, updateLastName } from '../../actions';
+import { updateSUID, updateRegistration } from '../../actions';
 
 class Login extends Component {
 	handleUsr = e => this.props.onUpdateUsr(e.target.value);
 	handlePwd = e => this.props.onUpdatePwd(e.target.value);
 	handlePage = page => this.props.onUpdatePage(page);
+	handleFirstName = firstName => this.props.onUpdateFirstName(firstName);
+	handleLastName = lastName => this.props.onUpdateLastName(lastName);
+	handleSUID = SUID => this.props.onUpdateSUID(SUID);
+	handleRegistration = registration => this.props.onUpdateRegistration(registration);
 	submitLogin = _ => {
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'https://www.edwardgao.com/hacksu/user/auth');
@@ -18,8 +24,13 @@ class Login extends Component {
 		}));
 		xhr.onload = _ => {
 			let res = JSON.parse(xhr.responseText);
-			if(res.success) {
+			let {success, firstName, lastName, SUID, registration} = res;
+			if(success) {
 				this.handlePage('welcome');
+				this.handleFirstName(firstName);
+				this.handleLastName(lastName);
+				this.handleSUID(SUID);
+				this.handleRegistration(registration);
 			}
 		}
 	}
@@ -34,9 +45,6 @@ class Login extends Component {
 					<label for="pwd">Password</label>
 					<input type="password" name="pwd" onChange={this.handlePwd}/>
 					<div id="login-submit" onClick={this.submitLogin}>submit</div>
-					<p>usr: {this.props.usr}</p>
-					<p>pwd: {this.props.pwd}</p>
-					<p>page: {this.props.page}</p>
 				</div>
 			</div>
 		);
@@ -55,7 +63,11 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onUpdateUsr: usr => dispatch(updateUsr(usr)),
 		onUpdatePwd: pwd => dispatch(updatePwd(pwd)),
-		onUpdatePage: page => dispatch(updatePage(page))
+		onUpdatePage: page => dispatch(updatePage(page)),
+		onUpdateFirstName: firstName => dispatch(updateFirstName(firstName)),
+		onUpdateLastName: lastName => dispatch(updateLastName(lastName)),
+		onUpdateSUID: SUID => dispatch(updateSUID(SUID)),
+		onUpdateRegistration: registration => dispatch(updateRegistration(registration))
 	}
 }
 
