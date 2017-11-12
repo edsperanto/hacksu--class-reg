@@ -14,7 +14,7 @@ function data(state = initialState, action) {
 		case UPDATE_PWD:
 			return Object.assign({}, state, {
 				pwd: action.pwd
-			})
+			});
 		default:
 			return state;
 	}

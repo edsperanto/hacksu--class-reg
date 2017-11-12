@@ -6,6 +6,12 @@ import Login from '../Login';
 import { updateUsr } from '../../actions';
 
 class App extends Component {
+	switcher = _ => {
+		switch(this.props.page) {
+			case 'login': return (<Login />); break;
+			case 'welcome': return (<p>sanity</p>); break;
+		}
+	}
   render() {
     return (
       <div className="App">
@@ -13,7 +19,7 @@ class App extends Component {
           <p className="App-title">HackSU</p>
         </header>
         <div className="body">
-					<Login />
+				{this.switcher()}
         </div>
       </div>
     );
@@ -22,7 +28,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
 	return {
-		usr: state.data.usr
+		usr: state.data.usr,
+		page: state.page.page
 	}
 }
 

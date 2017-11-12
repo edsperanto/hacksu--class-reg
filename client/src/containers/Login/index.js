@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.css';
 
-import { updateUsr, updatePwd } from '../../actions';
+import { updateUsr, updatePwd, updatePage } from '../../actions';
 
 class Login extends Component {
 	handleUsr = e => this.props.onUpdateUsr(e.target.value);
 	handlePwd = e => this.props.onUpdatePwd(e.target.value);
+	handlePage = page => this.props.onUpdatePage(page);
 	submitLogin = _ => {
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'https://www.edwardgao.com/hacksu/user/auth');
@@ -15,8 +16,11 @@ class Login extends Component {
 			usr: this.props.usr,
 			pwd: this.props.pwd
 		}));
-		xhr.onload = function() {
-			console.log(this.responseText);
+		xhr.onload = _ => {
+			let res = JSON.parse(xhr.responseText);
+			if(res.success) {
+				this.handlePage('welcome');
+			}
 		}
 	}
 	render() {
@@ -32,6 +36,7 @@ class Login extends Component {
 					<div id="login-submit" onClick={this.submitLogin}>submit</div>
 					<p>usr: {this.props.usr}</p>
 					<p>pwd: {this.props.pwd}</p>
+					<p>page: {this.props.page}</p>
 				</div>
 			</div>
 		);
@@ -41,14 +46,16 @@ class Login extends Component {
 function mapStateToProps(state) {
 	return {
 		usr: state.data.usr,
-		pwd: state.data.pwd
+		pwd: state.data.pwd,
+		page: state.page.page
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onUpdateUsr: usr => dispatch(updateUsr(usr)),
-		onUpdatePwd: pwd => dispatch(updatePwd(pwd))
+		onUpdatePwd: pwd => dispatch(updatePwd(pwd)),
+		onUpdatePage: page => dispatch(updatePage(page))
 	}
 }
 

@@ -4,7 +4,7 @@
 
 ### Dependencies
 
-- Server-side: NodeJS, Nginx, Let's Encrypt
 - Data Scraping: PhantomJS, CasperJS
-- Node modules: express, body-parser, cookie-parser
-- Front-end Framework: React
+- Server-side: NodeJS, Nginx, Let's Encrypt
+- Node modules: express, cors, body-parser
+- Front-End: React, Redux
