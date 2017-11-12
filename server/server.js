@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // remove \/hacksu in route
 app.use((req, res, next) => {
-	console.log('path: ', req.path);
-	req.path = req.path.split('/hacksu').join('');
+	if(req.url.indexOf('/hacksu') > -1)
+		req.url = req.url.split('/hacksu').join('');
 	next();
 });
 
