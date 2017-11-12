@@ -11,13 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.get('/hacksu', (req, res) => {
-	if(!!!req.usr || !!!req.pwd) {
-		res.redirect('/hacksu/login');
-	}else{
-		res.send('Welcome!');
-	}
-});
+app.use('/hacksu', express.static('../client/build'));
 
 // authenticate user
 var authUsr = null;

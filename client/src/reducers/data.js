@@ -1,25 +1,20 @@
-import {UPDATE_USR} from '../actions';
+import {UPDATE_USR, UPDATE_PWD} from '../actions';
 
 const initialState = {
-	usr: {
-		'firstName': null,
-		'lastName': null,
-		'SUID': null,
-		'registration': null
-	}
+	usr: null,
+	pwd: null
 }
 
 function data(state = initialState, action) {
 	switch(action.type) {
 		case UPDATE_USR:
 			return Object.assign({}, state, {
-				usr: {
-					'firstName': action['firstName'],
-					'lastName': action['lastName'],
-					'SUID': action['SUID'],
-					'registration': action['registration']
-				}
+				usr: action.usr
 			});
+		case UPDATE_PWD:
+			return Object.assign({}, state, {
+				pwd: action.pwd
+			})
 		default:
 			return state;
 	}
