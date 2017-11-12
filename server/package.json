@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "pg": "^7.4.0",
-    "sequelize": "^4.22.6"
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10"
   }
 }
