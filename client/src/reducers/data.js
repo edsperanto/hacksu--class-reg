@@ -1,6 +1,7 @@
 import {UPDATE_USR, UPDATE_PWD} from '../actions';
 import {UPDATE_FIRSTNAME, UPDATE_LASTNAME} from '../actions';
 import {UPDATE_SUID, UPDATE_REGISTRATION} from '../actions';
+import {UPDATE_ALLCLASS} from '../actions';
 
 const initialState = {
 	usr: null,
@@ -8,7 +9,8 @@ const initialState = {
 	firstName: null,
 	lastName: null,
 	SUID: null,
-	registration: null
+	registration: null,
+	allClass: null
 }
 
 function data(state = initialState, action) {
@@ -36,6 +38,10 @@ function data(state = initialState, action) {
 		case UPDATE_REGISTRATION:
 			return Object.assign({}, state, {
 				registration: action.registration
+			});
+		case UPDATE_ALLCLASS:
+			return Object.assign({}, state, {
+				allClass: action.allClass
 			});
 		default:
 			return state;

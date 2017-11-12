@@ -15,7 +15,7 @@ class Login extends Component {
 	handleSUID = SUID => this.props.onUpdateSUID(SUID);
 	handleRegistration = registration => this.props.onUpdateRegistration(registration);
 	submitLogin = _ => {
-		var xhr = new XMLHttpRequest();
+		let xhr = new XMLHttpRequest();
 		xhr.open('POST', 'https://www.edwardgao.com/hacksu/user/auth');
 		xhr.setRequestHeader('Content-type', 'application/json');
 		xhr.send(JSON.stringify({
@@ -31,6 +31,8 @@ class Login extends Component {
 				this.handleLastName(lastName);
 				this.handleSUID(SUID);
 				this.handleRegistration(registration);
+			}else{
+
 			}
 		}
 	}

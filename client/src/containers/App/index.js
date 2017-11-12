@@ -4,6 +4,7 @@ import './index.css';
 
 import Login from '../Login';
 import Welcome from '../Welcome';
+import All from '../All';
 import { updateUsr } from '../../actions';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
 		switch(this.props.page) {
 			case 'login': return (<Login />);
 			case 'welcome': return (<Welcome />);
+			case 'all': return (<All />);
 			default: return (<Login />);
 		}
 	}

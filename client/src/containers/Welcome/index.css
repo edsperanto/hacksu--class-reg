@@ -21,3 +21,19 @@
 	margin-left: 2rem;
 	margin-top: 1rem;
 }
+
+#toAll {
+	position: relative;
+	left: calc(100% - 10rem);
+	display: block;
+	width: 10rem;
+	text-align: center;
+	padding: 0.5rem;
+	border: 0px solid black;
+	border-bottom-width: 1px;
+	cursor: pointer;
+}
+
+#toAll b {
+	cursor: pointer;
+}

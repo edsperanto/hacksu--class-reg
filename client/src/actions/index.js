@@ -5,6 +5,7 @@ export const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME';
 export const UPDATE_LASTNAME = 'UPDATE_LASTNAME';
 export const UPDATE_SUID = 'UPDATE_SUID';
 export const UPDATE_REGISTRATION = 'UPDATE_REGISTRATION';
+export const UPDATE_ALLCLASS = 'UPDATE_ALLCLASS';
 
 export const updateUsr = usr => ({type: UPDATE_USR, usr});
 export const updatePwd = pwd => ({type: UPDATE_PWD, pwd});
@@ -13,3 +14,4 @@ export const updateFirstName = firstName => ({type: UPDATE_FIRSTNAME, firstName}
 export const updateLastName = lastName => ({type: UPDATE_LASTNAME, lastName});
 export const updateSUID = SUID => ({type: UPDATE_SUID, SUID});
 export const updateRegistration = registration => ({type: UPDATE_REGISTRATION, registration});
+export const updateAllClass = allClass => ({type: UPDATE_ALLCLASS, allClass: allClass});
