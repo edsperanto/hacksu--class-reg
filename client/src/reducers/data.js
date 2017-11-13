@@ -1,7 +1,8 @@
 import {UPDATE_USR, UPDATE_PWD} from '../actions';
 import {UPDATE_FIRSTNAME, UPDATE_LASTNAME} from '../actions';
 import {UPDATE_SUID, UPDATE_REGISTRATION} from '../actions';
-import {UPDATE_ALLCLASS} from '../actions';
+import {UPDATE_ALLCLASS, UPDATE_SEARCH} from '../actions';
+import {ADD_CANDIDATE, DEL_CANDIDATE} from '../actions';
 
 const initialState = {
 	usr: null,
@@ -10,7 +11,9 @@ const initialState = {
 	lastName: null,
 	SUID: null,
 	registration: null,
-	allClass: null
+	allClass: null,
+	search: "",
+	candidates: []
 }
 
 function data(state = initialState, action) {
@@ -42,6 +45,26 @@ function data(state = initialState, action) {
 		case UPDATE_ALLCLASS:
 			return Object.assign({}, state, {
 				allClass: action.allClass
+			});
+		case UPDATE_SEARCH:
+			return Object.assign({}, state, {
+				search: action.search
+			});
+		case ADD_CANDIDATE:
+			if(state.candidates.indexOf(action.course) > -1) {
+				return state;
+			}else{
+				return Object.assign({}, state, {
+					candidates: [...state.candidates, action.course]
+				});
+			}
+		case DEL_CANDIDATE:
+			let index = state.candidates.indexOf(action.course);
+			let newCandidates = state.candidates;
+			newCandidates.splice(index, 1);
+			console.log('nc: ', newCandidates);
+			return Object.assign({}, state, {
+				candidates: newCandidates
 			});
 		default:
 			return state;
