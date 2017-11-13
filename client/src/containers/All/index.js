@@ -13,7 +13,7 @@ class All extends Component {
 		this.props.onDelCandidate(e.currentTarget.dataset.id);
 		this.forceUpdate();
 	}
-	goToConstraint = _ => {this.handlePage('constraint')}
+	goToBrowse = _ => {this.handlePage('browse')}
 	render() {
 		return (
 			<div id="all-page">
@@ -81,7 +81,7 @@ class All extends Component {
 						}
 					</div>
 				</div>
-				<div id="toWeek">Week View →</div>
+				<div onClick={this.goToBrowse} id="toBrowse">Week View →</div>
 			</div>
 		);
 	}

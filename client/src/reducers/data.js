@@ -55,7 +55,7 @@ function data(state = initialState, action) {
 				return state;
 			}else{
 				return Object.assign({}, state, {
-					candidates: [...state.candidates, action.course]
+					candidates: [action.course, ...state.candidates]
 				});
 			}
 		case DEL_CANDIDATE:

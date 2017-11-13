@@ -5,6 +5,7 @@ import './index.css';
 import Login from '../Login';
 import Welcome from '../Welcome';
 import All from '../All';
+import Browse from '../Browse';
 import { updateUsr } from '../../actions';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
 			case 'login': return (<Login />);
 			case 'welcome': return (<Welcome />);
 			case 'all': return (<All />);
+			case 'browse': return (<Browse />);
 			default: return (<Login />);
 		}
 	}
