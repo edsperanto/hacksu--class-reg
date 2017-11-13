@@ -36,6 +36,7 @@ class Browse extends Component {
 								})
 						}
 					</div>
+					<div id="browse-filters">· · · Filters</div>
 				</div>
 				<div id="browse-right">
 					<div className="week-columns" id="U-col">
