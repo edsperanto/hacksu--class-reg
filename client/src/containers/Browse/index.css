@@ -23,6 +23,9 @@
 #final-candidates-list {
 	width: 100%;
 	height: calc(100% - 5rem);
+	border: 1px solid black;
+	border-bottom-width: 0px;
+	overflow-y: scroll;
 }
 
 #browse-filters {
@@ -34,6 +37,8 @@
 	padding-left: 1rem;
 	padding-right: 1rem;
 	text-align: right;
+	border-top-width: 0px;
+	border: 2px solid black;
 }
 
 #browse-right {
