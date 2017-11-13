@@ -26,18 +26,32 @@ class Browse extends Component {
 											return matchName && matchSec;
 										})[0];
 								})
-							.map(course => {
-								return(
-									<div className="candidate-card">
-										<p class="candidate-name">{course.name}-{course.section}</p>
-										<p class="candidate-title">{course.title}</p>
-									</div>
-								)
-							})
+								.map(course => {
+									return(
+										<div className="candidate-card">
+											<p class="candidate-name">{course.name}-{course.section}</p>
+											<p class="candidate-title">{course.title}</p>
+										</div>
+									)
+								})
 						}
 					</div>
 				</div>
 				<div id="browse-right">
+					<div className="week-columns" id="U-col">
+					</div>
+					<div className="week-columns" id="M-col">
+					</div>
+					<div className="week-columns" id="T-col">
+					</div>
+					<div className="week-columns" id="W-col">
+					</div>
+					<div className="week-columns" id="R-col">
+					</div>
+					<div className="week-columns" id="F-col">
+					</div>
+					<div className="week-columns" id="S-col">
+					</div>
 				</div>
 			</div>
 		)
