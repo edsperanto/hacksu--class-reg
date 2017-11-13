@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.css';
 
-import { updateUsr, updatePwd, updatePage } from '../../actions';
+import { updateUsr, updatePwd, updateErr, updatePage } from '../../actions';
 import { updateFirstName, updateLastName } from '../../actions';
 import { updateSUID, updateRegistration } from '../../actions';
 
 class Login extends Component {
 	handleUsr = e => this.props.onUpdateUsr(e.target.value);
 	handlePwd = e => this.props.onUpdatePwd(e.target.value);
+	handleErr = err => this.props.onUpdateErr(err);
 	handlePage = page => this.props.onUpdatePage(page);
 	handleFirstName = firstName => this.props.onUpdateFirstName(firstName);
 	handleLastName = lastName => this.props.onUpdateLastName(lastName);
@@ -32,7 +33,7 @@ class Login extends Component {
 				this.handleSUID(SUID);
 				this.handleRegistration(registration);
 			}else{
-
+				this.handleErr('incorrect username/password');
 			}
 		}
 	}
@@ -41,6 +42,7 @@ class Login extends Component {
 			<div id="login-com">
 				<div id="login-form">
 					<p id="login-title">Enter Credentails</p>
+					<p id="login-error">{this.props.err}</p>
 					<label for="usr">Username</label>
 					<input type="text" name="usr" onChange={this.handleUsr}/>
 					<br />
@@ -57,6 +59,7 @@ function mapStateToProps(state) {
 	return {
 		usr: state.data.usr,
 		pwd: state.data.pwd,
+		err: state.data.err,
 		page: state.page.page
 	}
 }
@@ -65,6 +68,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onUpdateUsr: usr => dispatch(updateUsr(usr)),
 		onUpdatePwd: pwd => dispatch(updatePwd(pwd)),
+		onUpdateErr: err => dispatch(updateErr(err)),
 		onUpdatePage: page => dispatch(updatePage(page)),
 		onUpdateFirstName: firstName => dispatch(updateFirstName(firstName)),
 		onUpdateLastName: lastName => dispatch(updateLastName(lastName)),
