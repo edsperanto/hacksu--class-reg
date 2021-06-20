@@ -16,26 +16,31 @@ class Login extends Component {
 	handleSUID = SUID => this.props.onUpdateSUID(SUID);
 	handleRegistration = registration => this.props.onUpdateRegistration(registration);
 	submitLogin = _ => {
-		let xhr = new XMLHttpRequest();
-		xhr.open('POST', 'https://www.edwardgao.com/hacksu/user/auth');
-		xhr.setRequestHeader('Content-type', 'application/json');
-		xhr.send(JSON.stringify({
-			usr: this.props.usr,
-			pwd: this.props.pwd
-		}));
-		xhr.onload = _ => {
-			let res = JSON.parse(xhr.responseText);
-			let {success, firstName, lastName, SUID, registration} = res;
-			if(success) {
-				this.handlePage('welcome');
-				this.handleFirstName(firstName);
-				this.handleLastName(lastName);
-				this.handleSUID(SUID);
-				this.handleRegistration(registration);
-			}else{
-				this.handleErr('incorrect username/password');
-			}
-		}
+		// let xhr = new XMLHttpRequest();
+		// xhr.open('POST', 'https://www.edwardgao.com/hacksu/user/auth');
+		// xhr.setRequestHeader('Content-type', 'application/json');
+		// xhr.send(JSON.stringify({
+		// 	usr: this.props.usr,
+		// 	pwd: this.props.pwd
+		// }));
+		// xhr.onload = _ => {
+		// 	let res = JSON.parse(xhr.responseText);
+		// 	let {success, firstName, lastName, SUID, registration} = res;
+		// 	if(success) {
+		// 		this.handlePage('welcome');
+		// 		this.handleFirstName(firstName);
+		//		this.handleLastName(lastName);
+		//		this.handleSUID(SUID);
+		//		this.handleRegistration(registration);
+		//	}else{
+		//		this.handleErr('incorrect username/password');
+		//	}
+		//}
+        this.handlePage('welcome');
+        this.handleFirstName("John");
+        this.handleLastName("Smith");
+        this.handleSUID("1234567");
+        this.handleRegistration("today");
 	}
 	render() {
 		return (

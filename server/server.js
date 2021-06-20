@@ -11,12 +11,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.use('/hacksu', express.static('../client/build'));
+app.use('/', express.static('../client/build'));
 
 // authenticate user
 var authUsr = null;
 var authPwd = null;
-app.post('/hacksu/user/auth', (req, res) => {
+app.post('/user/auth', (req, res) => {
 	let usr = req.body.usr;
 	let pwd = req.body.pwd;
 	const cheerio = require('cheerio');
@@ -53,22 +53,22 @@ app.post('/hacksu/user/auth', (req, res) => {
 	}
 });
 
-app.get('/hacksu/login', (req, res) => {
+app.get('/login', (req, res) => {
 	res.send('pls login');
 });
 
 // block unauthenticated users after this route
-app.use((req, res, next) => {
-	if(!authUsr && !authPwd) {
-		res.status(403);
-		res.send('FORBIDDEN');
-	}else{
-		next();
-	}
-});
+// app.use((req, res, next) => {
+//     if(!authUser && !authPwd) {
+//         res.status(403);
+//         res.send('FORBIDDEN');
+//     }else{
+//         next();
+//     }
+// });
 
 // get all classes
-app.get('/hacksu/all/class', (req, res) => {
+app.get('/all/class', (req, res) => {
 	res.json({
 		'success': true,
 		'data': require('./18WQ.json')['data']
@@ -76,11 +76,7 @@ app.get('/hacksu/all/class', (req, res) => {
 });
 
 // 404 Not Found
-app.use((req, res, next) => {
-	res.status(404);
-	res.redirect('/hacksu/404');
-});
-app.get('/hacksu/404', (req, res) => {
+app.get('/404', (req, res) => {
 	res.status(404);
 	res.send('404 NOT FOUND');
 });

@@ -9,7 +9,7 @@ class Welcome extends Component {
 	handleAllClass = allClass => this.props.onUpdateAllClass(allClass);
 	goToAll = _ => {
 		let xhr = new XMLHttpRequest();
-		xhr.open('GET', 'https://www.edwardgao.com/hacksu/all/class');
+		xhr.open('GET', 'https://host.edwardgao.com/Class_Registrator/all/class');
 		xhr.send();
 		xhr.onload = _ => {
 			let res = JSON.parse(xhr.responseText);
